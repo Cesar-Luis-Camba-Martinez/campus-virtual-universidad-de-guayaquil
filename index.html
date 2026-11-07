@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Virtual UG · Rediseño de César Camba</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">UG</span>
+      <div>
+        <strong>Campus Virtual</strong>
+        <small>Periodo 2026-2027 CII</small>
+      </div>
+    </div>
+    <button id="themeBtn" class="icon-btn" aria-label="Cambiar tema">◐</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Comunidad académica conectada</p>
+      <h1>Encuentra tu facultad<br><span>y entra a tu aula en un clic</span></h1>
+
+      <div class="stats">
+        <div><b id="statCampus">0</b><span>campus</span></div>
+        <div><b id="statFac">0</b><span>facultades</span></div>
+        <div><b id="statFav">0</b><span>favoritas</span></div>
+      </div>
+
+      <div class="searchbox">
+        <input id="search" type="search" placeholder="Buscar facultad o campus…" autocomplete="off">
+        <kbd>/</kbd>
+      </div>
+
+      <div id="chips" class="chips"></div>
+    </section>
+
+    <section id="favSection" class="favs hidden">
+      <h2>Mis favoritas</h2>
+      <div id="favList" class="fav-list"></div>
+    </section>
+
+    <section id="campusGrid" class="grid"></section>
+    <p id="empty" class="empty hidden">No encontramos coincidencias. Prueba con otro término.</p>
+  </main>
+
+  <footer>
+    <p>Rediseño propuesto por <strong>César Luis Camba Martínez</strong></p>
+    <p>Pedagogía en Ciencias Experimentales de la Informática · Facultad de Filosofía, Letras y Ciencias de la Educación</p>
+    <p class="note">Proyecto educativo independiente. No es un sitio oficial de la Universidad de Guayaquil.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --ink: #14213d;
+  --muted: #5b6478;
+  --brand: #0f5fd6;
+  --accent: #f5a623;
+  --line: #e3e7f0;
+  --shadow: 0 8px 24px rgba(20, 33, 61, 0.08);
+  --radius: 18px;
+}
+
+[data-theme="dark"] {
+  --bg: #0b1020;
+  --surface: #131a2e;
+  --ink: #e9eefc;
+  --muted: #9aa6c4;
+  --brand: #6aa4ff;
+  --accent: #ffc15c;
+  --line: #222d4a;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Barra superior */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 5vw;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; gap: 12px; align-items: center; }
+.brand small { display: block; color: var(--muted); font-size: 0.78rem; }
+.mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  color: #fff;
+  font-weight: 800;
+}
+.icon-btn {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Hero */
+.hero {
+  padding: 64px 5vw 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto;
+  height: 420px;
+  background:
+    radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--brand) 35%, transparent), transparent 60%),
+    radial-gradient(circle at 70% 30%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 55%);
+  filter: blur(30px);
+  z-index: -1;
+}
+.eyebrow {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--brand);
+  font-weight: 700;
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0.4rem 0 1.2rem;
+}
+h1 span {
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+.stats div { display: flex; flex-direction: column; }
+.stats b { font-size: 2rem; }
+.stats span { color: var(--muted); font-size: 0.85rem; }
+
+/* Buscador */
+.searchbox { max-width: 620px; margin: 0 auto; position: relative; }
+.searchbox input {
+  width: 100%;
+  padding: 18px 60px 18px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem;
+  box-shadow: var(--shadow);
+  outline: none;
+}
+.searchbox input:focus { border-color: var(--brand); }
+.searchbox kbd {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Filtros */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 20px; }
+.chip {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+.chip.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* Favoritas */
+main { padding: 10px 5vw 60px; }
+.favs { margin-bottom: 28px; }
+.favs h2 { font-size: 1.1rem; }
+.fav-list { display: flex; gap: 10px; flex-wrap: wrap; }
+.fav-list span {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+/* Tarjetas */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  animation: rise 0.5s ease backwards;
+  animation-delay: var(--delay, 0ms);
+  transition: transform 0.25s;
+}
+.card:hover { transform: translateY(-4px); }
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.card-head h3 { margin: 0; font-size: 1.05rem; }
+.card-head small { color: var(--muted); }
+.go {
+  font-size: 0.82rem;
+  color: var(--brand);
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 600;
+}
+ul { list-style: none; padding: 0; margin: 0; }
+.fac {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.fac a { flex: 1; color: var(--ink); text-decoration: none; font-size: 0.93rem; }
+.fac a:hover { color: var(--brand); }
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--brand) 15%, transparent);
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.star {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+.star.on { color: var(--accent); }
+
+.empty { text-align: center; color: var(--muted); padding: 40px; }
+.hidden { display: none !important; }
+
+footer {
+  text-align: center;
+  padding: 30px 5vw 40px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+footer p { margin: 6px 0; }
+.note { font-size: 0.78rem; opacity: 0.8; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { animation: none !important; transition: none !important; }
+}
